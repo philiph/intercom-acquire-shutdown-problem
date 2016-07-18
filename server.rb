@@ -5,9 +5,9 @@ get '/' do
 end
 
 get '/signed_out' do
-  "You are signed out"
+  erb :signed_out
 end
 
 get '/signed_in' do
-  "You are signed in"
+  erb :signed_in
 end
