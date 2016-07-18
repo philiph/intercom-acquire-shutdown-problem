@@ -12,16 +12,23 @@ before do
   load_user
 end
 
-def load_user
-  user_id = session[:user_id]
-  if user_id == 9876
-    @user = OpenStruct.new(
+def users
+  [
+    OpenStruct.new(
       user_id: '9876',
       email: 'john.doe@example.com',
-      user_hash: user_hash(user_id),
       created_at: 1234567890,
       name: 'John Doe'
     )
+  ]
+end
+
+def load_user
+  user_id = session[:user_id]
+  if user_id
+    @user = users.select { |u| u.user_id == user_id.to_s }.first
+    @user.user_hash = user_hash(@user.user_id)
+    @user
   end
 end
 
@@ -42,7 +49,8 @@ get '/about' do
 end
 
 get '/sign_in' do
-  session[:user_id] = 9876
+  user = users.first
+  session[:user_id] = user.user_id
   redirect '/'
 end
 
