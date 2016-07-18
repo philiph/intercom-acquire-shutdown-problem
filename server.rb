@@ -9,9 +9,11 @@ before do
 end
 
 get '/signed_out' do
+  @user_signed_in = false
   erb :signed_out
 end
 
 get '/signed_in' do
+  @user_signed_in = true
   erb :signed_in
 end
