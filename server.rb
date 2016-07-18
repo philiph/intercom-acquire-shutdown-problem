@@ -4,7 +4,7 @@ require 'openssl'
 require 'rack-flash'
 
 enable :sessions
-use Rack::Flash
+use Rack::Flash, :sweep => true
 
 set :intercom_app_id, 'xyz'
 set :intercom_secret, 'xyz'
@@ -59,6 +59,7 @@ end
 
 get '/sign_out' do
   session[:user_id] = nil
+  flash[:just_signed_out] = true
   flash[:notice] = "You have been signed out."
   redirect '/'
 end
