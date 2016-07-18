@@ -1,12 +1,12 @@
 <script>
-  <% if @user_signed_in %>
+  <% if @user %>
     window.intercomSettings = {
       app_id: '<%= @intercom_app_id %>',
-      email: 'john.doe@example.com',
-      user_id: '9876',
-      user_hash: 'PUT_SOMETHING_VALID_HERE',
-      created_at: 1234567890,
-      name: 'John Doe'
+      user_id: '<%= @user.user_id %>',
+      email: '<%= @user.email %>',
+      user_hash: '<%= @user.user_hash %>',
+      created_at: '<%= @user.created_at %>',
+      name: '<%= @user.name %>'
     };
   <% else %>
     window.intercomSettings = {

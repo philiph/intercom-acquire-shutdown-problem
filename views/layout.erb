@@ -9,7 +9,18 @@
 <body>
   <h1>Intercom Acquire - simple example</h1>
 
+  <p>
+    <a href="/">Home</a><br />
+    <a href="/about">About</a>
+  </p>
+
   <%= yield %>
+
+  <% if @user %>
+    <p>Signed in as <strong><%= @user.name %></strong>.  <a href="/sign_out">Sign out</a>.</p>
+  <% else %>
+    <p>Signed out.  <a href="/sign_in">Sign in</a>.</p>
+  <% end %>
 
   <%= erb :intercom_tracking %>
 </body>
