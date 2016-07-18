@@ -1,8 +1,10 @@
 require 'sinatra'
 require 'ostruct'
 require 'openssl'
+require 'rack-flash'
 
 enable :sessions
+use Rack::Flash
 
 set :intercom_app_id, 'xyz'
 set :intercom_secret, 'xyz'
@@ -51,10 +53,12 @@ end
 get '/sign_in' do
   user = users.first
   session[:user_id] = user.user_id
+  flash[:notice] = "Welcome, #{user.name}!"
   redirect '/'
 end
 
 get '/sign_out' do
   session[:user_id] = nil
+  flash[:notice] = "You have been signed out."
   redirect '/'
 end

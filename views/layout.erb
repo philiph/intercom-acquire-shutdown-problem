@@ -9,6 +9,10 @@
 <body>
   <h1>Intercom Acquire - simple example</h1>
 
+  <% if flash[:notice] %>
+    <p style="color: green;"><%= flash[:notice] %></p>
+  <% end %>
+
   <p>
     <a href="/">Home</a><br />
     <a href="/about">About</a>

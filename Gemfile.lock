@@ -5,6 +5,8 @@ GEM
       thor (~> 0.19.1)
     puma (3.4.0)
     rack (1.6.4)
+    rack-flash3 (1.0.5)
+      rack
     rack-protection (1.5.3)
       rack
     sinatra (1.4.7)
@@ -20,6 +22,7 @@ PLATFORMS
 DEPENDENCIES
   foreman
   puma
+  rack-flash3
   sinatra
 
 BUNDLED WITH
